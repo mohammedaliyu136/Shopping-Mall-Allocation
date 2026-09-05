@@ -102,7 +102,7 @@ class DemoDataSeeder extends Seeder
                 ['email' => $email],
                 [
                     'name' => $name,
-                    'password' => Hash::make('password'),
+                    'password' => Hash::make(config('mall.demo_password')),
                     'role_id' => $role->id,
                     'is_active' => true,
                     'email_verified_at' => Carbon::now(),
@@ -189,7 +189,7 @@ class DemoDataSeeder extends Seeder
                 ['email' => $email],
                 [
                     'name' => $name,
-                    'password' => Hash::make('password'),
+                    'password' => Hash::make(config('mall.demo_password')),
                     'role_id' => $ownerRole->id,
                     'owner_id' => $owner->id,
                     'phone' => $phone,

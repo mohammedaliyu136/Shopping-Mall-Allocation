@@ -1,0 +1,24 @@
+{
+    "name": "Mall Allocation System",
+    "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bookworm",
+
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postStartCommand": "bash .devcontainer/serve.sh",
+
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "Mall Allocation System",
+            "onAutoForward": "openBrowser"
+        }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "onecentlin.laravel-blade"
+            ]
+        }
+    }
+}

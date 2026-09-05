@@ -9,6 +9,35 @@ Built with **Laravel 13 (PHP 8.3+) and SQLite**.
 
 ---
 
+## Try it without setting anything up
+
+Open the repository on GitHub, press **Code → Codespaces → Create codespace on
+this branch**. This works from a phone or tablet browser — no local machine
+needed.
+
+The codespace installs dependencies, creates the SQLite database, loads the
+demonstration data and starts the server automatically. When it finishes, open
+the **Ports** tab and click the forwarded address for port 8000.
+
+Forwarded ports are private to your GitHub account by default. To show someone
+else, set the port's visibility to Public in the Ports tab.
+
+### A public URL that stays up
+
+To host it instead, the repository ships a `Dockerfile` and a `render.yaml`
+blueprint. On [Render](https://render.com), choose **New → Blueprint** and point
+it at this repository; it will ask you for a `DEMO_PASSWORD` for the seeded
+accounts, since the deployed URL is public.
+
+On Render's free plan the filesystem is ephemeral, so the database rebuilds
+itself with fresh demonstration data whenever the service restarts. Attach a
+persistent disk to keep changes between restarts.
+
+> The container serves through PHP's built-in server, which suits a demo or a
+> test instance. Put PHP-FPM and nginx in front of it for production traffic.
+
+---
+
 ## Quick start
 
 ```bash
@@ -33,7 +62,10 @@ so `npm install` is not required to run the application.
 five registered owners with active allocations, generated letters and cards, invoices,
 payments and receipts, notifications and a support ticket.
 
-Every account below uses the password `password`.
+Every account below uses the password `password`. Set a `DEMO_PASSWORD`
+environment variable before seeding to use something else — do that for any
+instance reachable over the internet, since these accounts include a Super
+Administrator.
 
 | Role | Email | Sees |
 |---|---|---|
@@ -172,7 +204,7 @@ tests/
 php artisan test
 ```
 
-54 tests / 279 assertions, all passing. `AcceptanceCriteriaTest` maps one-to-one onto the
+62 tests / 327 assertions, all passing. `AcceptanceCriteriaTest` maps one-to-one onto the
 sixteen acceptance criteria in SRS section 14, so the suite is a direct check of whether the
 system meets its stated definition of done.
 

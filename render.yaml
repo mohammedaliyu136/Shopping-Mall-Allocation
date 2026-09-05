@@ -1,0 +1,30 @@
+# Render blueprint: deploys the application as a container with a public URL.
+#
+# On Render's free plan the filesystem is ephemeral, so the SQLite database is
+# rebuilt with fresh demonstration data whenever the service restarts. Attach a
+# persistent disk (a paid feature) to keep changes between restarts.
+services:
+  - type: web
+    name: mall-allocation-system
+    runtime: docker
+    plan: free
+    healthCheckPath: /up
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: SESSION_DRIVER
+        value: database
+      # Render generates and stores this, so sessions survive a restart.
+      - key: APP_KEY
+        generateValue: true
+      # The password for every seeded demonstration account. Render will ask you
+      # for a value when you create the blueprint - set something only you know,
+      # because the deployed URL is public.
+      - key: DEMO_PASSWORD
+        sync: false
