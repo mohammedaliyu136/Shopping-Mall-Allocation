@@ -1,0 +1,26 @@
+{
+    "name": "Ward View (configurable ward screens)",
+    "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bookworm",
+
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/ward-view",
+
+    "postCreateCommand": "bash docker/codespace-setup.sh",
+    "postStartCommand": "bash docker/codespace-serve.sh",
+
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "Ward View",
+            "onAutoForward": "openBrowser"
+        }
+    },
+
+    "customizations": {
+        "codespaces": {
+            "openFiles": ["README.md"]
+        },
+        "vscode": {
+            "extensions": ["bmewburn.vscode-intelephense-client", "onecentlin.laravel-blade"]
+        }
+    }
+}

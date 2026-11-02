@@ -8,7 +8,18 @@ and observation charts on or off from an admin screen. Nothing is laid out at ru
 > This is a standalone application. It lives in `ward-view/` and shares nothing with
 > the Shopping Mall Allocation app at the repository root.
 
-## Quick start
+## Try it in the browser (no install)
+
+Open **[Ward View in GitHub Codespaces](https://codespaces.new/mohammedaliyu136/Shopping-Mall-Allocation?ref=claude/hopeful-clarke-it1wkb&devcontainer_path=.devcontainer/ward-view/devcontainer.json)**
+and press **Create codespace**. It installs everything, loads the demo hospital and
+starts the app. When it is done, open port 8000 from the **Ports** tab. This works
+from a phone or tablet browser.
+
+To host it at a permanent URL, `ward-view/Dockerfile` builds a container. On Render,
+choose New → Web Service, pick the Docker runtime and set the root directory to
+`ward-view`. Set `DEMO_PASSWORD` there, because the demo accounts include an admin.
+
+## Quick start (local)
 
 ```bash
 cd ward-view
